@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shiv Service Station & Scooter Workers – Lopoke, Punjab</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   CSS VARIABLES & RESET
+============================================================ */
+:root {
+  --bg:        #E6E2DA;
+  --bg-dark:   #D5D0C6;
+  --red:       #DA5741;
+  --red-dark:  #B8402E;
+  --charcoal:  #1A1A1A;
+  --mid:       #4A4A4A;
+  --light:     #F5F2EC;
+  --white:     #FFFFFF;
+  --card-bg:   #EDEAE3;
+  --border:    rgba(26,26,26,0.12);
+  --shadow:    0 8px 32px rgba(26,26,26,0.14);
+  --shadow-lg: 0 20px 60px rgba(26,26,26,0.22);
+  --font-head: 'Montserrat', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --radius:    6px;
+  --transition: 0.28s cubic-bezier(.4,0,.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--charcoal);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+a  { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+/* ============================================================
+   NOISE TEXTURE OVERLAY
+============================================================ */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: .5;
+}
+
+/* ============================================================
+   UTILITY
+============================================================ */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  font-family: var(--font-head);
+  font-size: .7rem; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 12px; display: block;
+}
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+  font-weight: 900; text-transform: uppercase;
+  line-height: 1.1; color: var(--charcoal);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: .97rem; color: var(--mid); max-width: 560px; line-height: 1.7;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-head); font-size: .82rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: var(--radius);
+  cursor: pointer; border: 2px solid transparent;
+  transition: var(--transition); white-space: nowrap;
+}
+.btn-primary {
+  background: var(--red); color: var(--white);
+  border-color: var(--red);
+}
+.btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(218,87,65,.35); }
+.btn-outline {
+  background: transparent; color: var(--charcoal);
+  border-color: var(--charcoal);
+}
+.btn-outline:hover { background: var(--charcoal); color: var(--white); transform: translateY(-2px); }
+.btn-outline-white {
+  background: transparent; color: var(--white);
+  border-color: rgba(255,255,255,.7);
+}
+.btn-outline-white:hover { background: var(--white); color: var(--charcoal); }
+.btn-sm { padding: 10px 20px; font-size: .76rem; }
+
+/* ============================================================
+   HEADER / NAV
+============================================================ */
+#header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 20px 0;
+  transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition), padding var(--transition);
+}
+#header.scrolled {
+  background: rgba(230,226,218,.78);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 2px 20px rgba(26,26,26,.1);
+  padding: 12px 0;
+}
+#header .container {
+  display: flex; align-items: center; gap: 40px;
+}
+.logo {
+  display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+}
+.logo-icon {
+  width: 42px; height: 42px;
+  background: var(--red);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.logo-text { font-family: var(--font-head); line-height: 1.1; }
+.logo-text strong {
+  display: block; font-size: .95rem; font-weight: 900;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.logo-text span { font-size: .68rem; font-weight: 500; color: var(--mid); letter-spacing: .06em; }
+
+nav { display: flex; align-items: center; gap: 32px; margin-left: auto; }
+nav a {
+  font-family: var(--font-head); font-size: .78rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal);
+  position: relative; padding-bottom: 4px;
+}
+nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+  background: var(--red); transition: width var(--transition);
+}
+nav a:hover::after { width: 100%; }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.btn-login {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-head); font-size: .78rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--mid);
+  display: flex; align-items: center; gap: 6px; padding: 0;
+  transition: color var(--transition);
+}
+.btn-login:hover { color: var(--charcoal); }
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--charcoal);
+  transition: var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* Mobile nav */
+.mobile-nav {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--charcoal); z-index: 999; padding: 100px 40px 40px;
+  flex-direction: column; gap: 24px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--font-head); font-size: 1.6rem; font-weight: 900;
+  text-transform: uppercase; color: var(--white); letter-spacing: .06em;
+  border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 20px;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero {
+  min-height: 100vh;
+  background: var(--charcoal);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+/* diagonal bg shape */
+#hero::before {
+  content: '';
+  position: absolute; right: -80px; top: 0; bottom: 0; width: 55%;
+  background: linear-gradient(135deg, #252525 0%, #1A1A1A 100%);
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+/* red accent bar */
+#hero::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0; height: 4px; width: 40%;
+  background: var(--red); z-index: 1;
+}
+
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  position: relative; z-index: 1;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(218,87,65,.15); border: 1px solid rgba(218,87,65,.3);
+  color: var(--red); font-family: var(--font-head); font-size: .7rem;
+  font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 2px; margin-bottom: 28px;
+}
+.hero-tag span { width: 6px; height: 6px; background: var(--red); border-radius: 50%; display: block; animation: pulse 1.6s infinite; }
+
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(1.5); }
+}
+
+.hero-headline {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900; text-transform: uppercase;
+  line-height: 1.0; letter-spacing: -.01em;
+  color: var(--white); margin-bottom: 24px;
+}
+.hero-headline .accent { color: var(--red); display: block; }
+
+.hero-sub {
+  font-size: .95rem; color: rgba(255,255,255,.55);
+  margin-bottom: 40px; max-width: 440px; line-height: 1.8;
+  letter-spacing: .04em;
+}
+.hero-sub strong { color: rgba(255,255,255,.8); font-weight: 600; }
+
+.hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* stats bar */
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.stat-item {}
+.stat-num {
+  font-family: var(--font-head); font-size: 1.8rem; font-weight: 900;
+  color: var(--white); line-height: 1; margin-bottom: 4px;
+}
+.stat-num span { color: var(--red); }
+.stat-label { font-size: .72rem; color: rgba(255,255,255,.4); letter-spacing: .1em; text-transform: uppercase; }
+
+/* Hero visual panel */
+.hero-visual {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
+}
+
+.hero-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px; padding: 28px 32px;
+  backdrop-filter: blur(12px);
+  width: 100%; max-width: 360px;
+}
+.hero-card-icon { font-size: 2.2rem; margin-bottom: 14px; }
+.hero-card-title {
+  font-family: var(--font-head); font-size: .8rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-card-desc { font-size: .8rem; color: rgba(255,255,255,.45); line-height: 1.6; }
+
+.hero-badge {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--red); border-radius: 6px; padding: 16px 22px;
+  width: 100%; max-width: 360px;
+}
+.hero-badge-icon { font-size: 1.5rem; }
+.hero-badge-text { font-family: var(--font-head); font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: .07em; }
+
+/* ============================================================
+   SERVICES
+============================================================ */
+#services { padding: 100px 0; }
+
+.services-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 60px; gap: 30px; flex-wrap: wrap;
+}
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 40px 32px;
+  position: relative; overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: default;
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--red); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(218,87,65,.2);
+}
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-num {
+  font-family: var(--font-head); font-size: 4rem; font-weight: 900;
+  color: rgba(26,26,26,.06); line-height: 1; position: absolute; top: 20px; right: 24px;
+  letter-spacing: -.04em; user-select: none;
+}
+.service-icon {
+  width: 56px; height: 56px; background: var(--charcoal); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 28px;
+  transition: background var(--transition);
+}
+.service-card:hover .service-icon { background: var(--red); }
+.service-title {
+  font-family: var(--font-head); font-size: 1rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px;
+  line-height: 1.2;
+}
+.service-desc { font-size: .875rem; color: var(--mid); line-height: 1.75; margin-bottom: 24px; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: var(--font-head); font-size: .65rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 2px;
+  background: rgba(26,26,26,.07); color: var(--mid);
+}
+
+/* ============================================================
+   SHOP
+============================================================ */
+#shop {
+  padding: 100px 0;
+  background: var(--charcoal);
+  position: relative; overflow: hidden;
+}
+#shop::before {
+  content: '';
+  position: absolute; top: -120px; right: -120px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(218,87,65,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+#shop .section-label { color: rgba(218,87,65,.9); }
+#shop .section-title { color: var(--white); }
+#shop .section-sub { color: rgba(255,255,255,.45); }
+
+.shop-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 60px; gap: 30px; flex-wrap: wrap;
+}
+
+.products-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+
+.product-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px; overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  border-color: rgba(218,87,65,.35);
+}
+.product-thumb {
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem; position: relative; overflow: hidden;
+}
+.product-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,.4) 100%);
+}
+.product-body { padding: 24px; }
+.product-brand {
+  font-family: var(--font-head); font-size: .65rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--red);
+  margin-bottom: 8px; display: block;
+}
+.product-name {
+  font-family: var(--font-head); font-size: .95rem; font-weight: 800;
+  text-transform: uppercase; color: var(--white); margin-bottom: 10px; line-height: 1.3;
+}
+.product-desc { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.65; margin-bottom: 20px; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; }
+.product-price {
+  font-family: var(--font-head); font-size: 1.2rem; font-weight: 900;
+  color: var(--white); letter-spacing: -.02em;
+}
+.product-price small { font-size: .7rem; color: rgba(255,255,255,.35); font-weight: 500; margin-right: 2px; }
+
+/* ============================================================
+   ABOUT
+============================================================ */
+#about { padding: 100px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+.about-visual {
+  position: relative;
+}
+.about-main-box {
+  background: var(--charcoal);
+  border-radius: 8px; padding: 50px 40px;
+  position: relative; overflow: hidden;
+}
+.about-main-box::before {
+  content: '';
+  position: absolute; bottom: 0; right: 0;
+  width: 180px; height: 180px;
+  background: var(--red); border-radius: 100% 0 0 0;
+  opacity: .12;
+}
+.about-big-text {
+  font-family: var(--font-head); font-size: 5rem; font-weight: 900;
+  text-transform: uppercase; color: var(--white); line-height: 1;
+  letter-spacing: -.04em; margin-bottom: 16px; position: relative; z-index: 1;
+}
+.about-big-text span { color: var(--red); display: block; }
+.about-tagline {
+  font-size: .85rem; color: rgba(255,255,255,.4); position: relative; z-index: 1;
+  text-transform: uppercase; letter-spacing: .1em;
+}
+
+.about-badge-row {
+  display: flex; gap: 16px; margin-top: 20px;
+}
+.about-badge {
+  flex: 1; background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 20px 16px; text-align: center;
+}
+.about-badge-num {
+  font-family: var(--font-head); font-size: 1.5rem; font-weight: 900;
+  color: var(--red); margin-bottom: 4px;
+}
+.about-badge-label { font-size: .72rem; color: var(--mid); letter-spacing: .07em; text-transform: uppercase; }
+
+.about-content {}
+.about-content .section-sub { margin-bottom: 32px; }
+.feature-list { display: flex; flex-direction: column; gap: 16px; }
+.feature-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 16px 20px; background: var(--card-bg);
+  border: 1px solid var(--border); border-radius: 6px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.feature-item:hover { border-color: var(--red); transform: translateX(4px); }
+.feature-icon {
+  font-size: 1.3rem; flex-shrink: 0; margin-top: 2px;
+}
+.feature-item-title {
+  font-family: var(--font-head); font-size: .82rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px;
+}
+.feature-item-desc { font-size: .8rem; color: var(--mid); line-height: 1.6; }
+
+/* ============================================================
+   LOCATION / FOOTER
+============================================================ */
+#location { padding: 100px 0 0; background: var(--charcoal); }
+#location .section-label { color: rgba(218,87,65,.9); }
+#location .section-title { color: var(--white); }
+#location .section-sub { color: rgba(255,255,255,.45); }
+
+.location-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; margin: 60px 0; }
+
+.contact-cards { display: flex; flex-direction: column; gap: 16px; }
+.contact-card {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 6px; padding: 20px 24px; display: flex; gap: 16px; align-items: center;
+}
+.contact-card-icon { font-size: 1.4rem; flex-shrink: 0; }
+.contact-card-label {
+  font-family: var(--font-head); font-size: .65rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: 4px;
+}
+.contact-card-value { font-size: .9rem; color: var(--white); font-weight: 500; }
+
+.map-wrap {
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: var(--shadow-lg);
+}
+.map-wrap iframe { display: block; width: 100%; height: 360px; border: none; filter: grayscale(30%) contrast(1.1); }
+
+footer {
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 40px 0;
+  margin-top: 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-copy { font-size: .78rem; color: rgba(255,255,255,.3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-family: var(--font-head); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); transition: color var(--transition); }
+.footer-links a:hover { color: var(--red); }
+
+/* ============================================================
+   MODALS – BASE
+============================================================ */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(10,10,10,.75); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--light); border-radius: 10px;
+  max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg); position: relative;
+  animation: modalIn .32s cubic-bezier(.4,0,.2,1);
+}
+@keyframes modalIn {
+  from { opacity:0; transform:translateY(30px) scale(.96); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(26,26,26,.08); border: none; border-radius: 50%;
+  width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; cursor: pointer; transition: background var(--transition);
+  color: var(--charcoal);
+}
+.modal-close:hover { background: rgba(218,87,65,.15); color: var(--red); }
+
+/* ============================================================
+   PRODUCT MODAL
+============================================================ */
+#product-modal .modal { max-width: 600px; }
+
+.modal-product-header {
+  background: var(--charcoal); padding: 40px;
+  border-radius: 10px 10px 0 0;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  position: relative;
+}
+.modal-product-emoji { font-size: 4rem; }
+.modal-product-brand {
+  font-family: var(--font-head); font-size: .65rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--red);
+}
+.modal-product-name {
+  font-family: var(--font-head); font-size: 1.3rem; font-weight: 900;
+  text-transform: uppercase; color: var(--white); text-align: center; line-height: 1.2;
+}
+.modal-product-price {
+  font-family: var(--font-head); font-size: 1.8rem; font-weight: 900;
+  color: var(--white);
+}
+.modal-product-price small { font-size: 1rem; color: rgba(255,255,255,.5); }
+
+.modal-body { padding: 32px 40px; }
+.modal-body p { font-size: .9rem; color: var(--mid); line-height: 1.75; margin-bottom: 24px; }
+.modal-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+.spec-item {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 5px; padding: 12px 16px;
+}
+.spec-label { font-family: var(--font-head); font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+.spec-value { font-size: .88rem; font-weight: 600; color: var(--charcoal); }
+
+/* Battery ordering box */
+.battery-order-box {
+  background: var(--charcoal); border-radius: 8px; padding: 28px;
+  margin-bottom: 24px;
+}
+.battery-order-title {
+  font-family: var(--font-head); font-size: .8rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--white);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+}
+.battery-order-title::before { content: '⚡'; }
+
+.checkbox-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.checkbox-row input[type="checkbox"] {
+  width: 20px; height: 20px; accent-color: var(--red); cursor: pointer; flex-shrink: 0;
+}
+.checkbox-row label {
+  font-size: .875rem; color: rgba(255,255,255,.75); cursor: pointer;
+}
+
+.gps-row { margin-bottom: 20px; }
+.gps-result {
+  margin-top: 12px; font-size: .8rem; color: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.05); border-radius: 5px; padding: 10px 14px;
+  display: none; word-break: break-all; font-family: monospace;
+}
+.gps-result.show { display: block; }
+.gps-result.success { color: #5dbb63; border-left: 3px solid #5dbb63; }
+.gps-result.error { color: #e07070; border-left: 3px solid #e07070; }
+
+.advance-note { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 12px; text-align: center; }
+
+.modal-footer-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ============================================================
+   LOGIN MODAL
+============================================================ */
+#login-modal .modal { max-width: 480px; }
+.login-header {
+  background: var(--charcoal); padding: 36px 40px 28px;
+  border-radius: 10px 10px 0 0;
+}
+.login-title {
+  font-family: var(--font-head); font-size: 1.3rem; font-weight: 900;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--white);
+  margin-bottom: 6px;
+}
+.login-sub { font-size: .82rem; color: rgba(255,255,255,.4); }
+
+.login-body { padding: 32px 40px; }
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block; font-family: var(--font-head); font-size: .7rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--mid);
+  margin-bottom: 8px;
+}
+.form-input, .form-textarea {
+  width: 100%; padding: 13px 16px;
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius); font-family: var(--font-body); font-size: .9rem;
+  color: var(--charcoal); transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+}
+.form-input:focus, .form-textarea:focus {
+  outline: none; border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(218,87,65,.12);
+}
+.form-textarea { min-height: 90px; }
+
+.save-success {
+  display: none; background: rgba(93,187,99,.1); border: 1px solid rgba(93,187,99,.3);
+  border-radius: 5px; padding: 12px 16px; font-size: .83rem; color: #4a9e50;
+  margin-top: 12px; align-items: center; gap: 8px;
+}
+.save-success.show { display: flex; }
+
+/* ============================================================
+   TOAST
+============================================================ */
+#toast {
+  position: fixed; bottom: 30px; right: 30px; z-index: 3000;
+  background: var(--charcoal); color: var(--white);
+  font-family: var(--font-head); font-size: .78rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 14px 22px; border-radius: 6px; border-left: 4px solid var(--red);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(120%); transition: transform .35s cubic-bezier(.4,0,.2,1);
+  max-width: 320px;
+}
+#toast.show { transform: translateX(0); }
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+============================================================ */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1024px) {
+  .services-grid, .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .location-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav, .nav-right .btn { display: none; }
+  .hamburger { display: flex; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .services-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .services-header, .shop-header { flex-direction: column; align-items: flex-start; }
+  .modal-body { padding: 24px; }
+  .modal-product-header { padding: 28px 24px; }
+  .login-body, .login-header { padding: 24px; }
+  .modal-specs { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+  .about-badge-row { flex-direction: column; }
+  .modal-footer-btns { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================================
+     HEADER
+======================================================== -->
+<header id="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <strong>Shiv Service</strong>
+        <span>Lopoke, Punjab</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#location">Location</a>
+    </nav>
+
+    <div class="nav-right">
+      <button class="btn-login" onclick="openLoginModal()">
+        <span>👤</span> Account
+      </button>
+      <a href="#shop" class="btn btn-primary btn-sm">Order Battery</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#services" onclick="closeMobileNav()">Services</a>
+  <a href="#shop" onclick="closeMobileNav()">Shop</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#location" onclick="closeMobileNav()">Location</a>
+  <a href="#" onclick="openLoginModal(); closeMobileNav()">My Account</a>
+</nav>
+
+<!-- ========================================================
+     HERO
+======================================================== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- LEFT -->
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span></span> Now Serving Lopoke & Surrounding Villages
+        </div>
+        <h1 class="hero-headline">
+          WHERE RELIABLE<br>POWER MEETS
+          <span class="accent">PREMIUM SERVICE</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>Extreme Car Wash</strong> &bull;
+          <strong>Crop Pump Repair</strong> &bull;
+          <strong>Home Inverter Batteries</strong>
+        </p>
+        <div class="hero-btns">
+          <a href="#services" class="btn btn-primary">🔧 Book Service</a>
+          <a href="#shop" class="btn btn-outline-white">📦 View Products</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">500<span>+</span></div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12<span>+</span></div>
+            <div class="stat-label">Years Active</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3<span>×</span></div>
+            <div class="stat-label">Core Services</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT VISUAL -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-icon">🔋</div>
+          <div class="hero-card-title">Livguard &amp; Luminous</div>
+          <div class="hero-card-desc">Authorised dealer &amp; installation for premium home inverter battery brands.</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🚜</div>
+          <div class="hero-card-title">Tractors &amp; Bikes</div>
+          <div class="hero-card-desc">High-pressure commercial wash bay. Spotless finish every time.</div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon">🛡️</div>
+          <div class="hero-badge-text">Trusted Since 2012 · Lopoke, Punjab</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SERVICES
+======================================================== -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">OUR CORE<br>SERVICES</h2>
+      </div>
+      <p class="section-sub">Three specialised pillars built for rural Punjab's unique needs — from your fields to your home.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🚗</div>
+        <h3 class="service-title">Car &amp; Tractor Wash</h3>
+        <p class="service-desc">High-pressure professional detailing for motorbikes, sedans, SUVs, and heavy-duty tractors. We remove mud, grease, and field residue fast.</p>
+        <div class="service-tags">
+          <span class="tag">Bikes</span>
+          <span class="tag">Sedans</span>
+          <span class="tag">Tractors</span>
+          <span class="tag">High Pressure</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card reveal" style="transition-delay:.1s">
+        <div class="service-num">02</div>
+        <div class="service-icon">🌾</div>
+        <h3 class="service-title">Crop Spray Pumps</h3>
+        <p class="service-desc">Expert mechanic repairs and retail sales for 12V electric motor pumps and traditional manual farm spray pumps. Keeping your harvest on schedule.</p>
+        <div class="service-tags">
+          <span class="tag">12V Motor</span>
+          <span class="tag">Manual Pumps</span>
+          <span class="tag">Repair</span>
+          <span class="tag">Sales</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card reveal" style="transition-delay:.2s">
+        <div class="service-num">03</div>
+        <div class="service-icon">🔋</div>
+        <h3 class="service-title">Home Batteries</h3>
+        <p class="service-desc">Authorised sales, servicing, and doorstep installation for Livguard and Luminous home inverter batteries. Uninterrupted power for your family.</p>
+        <div class="service-tags">
+          <span class="tag">Livguard</span>
+          <span class="tag">Luminous</span>
+          <span class="tag">Installation</span>
+          <span class="tag">Service</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SHOP
+======================================================== -->
+<section id="shop">
+  <div class="container">
+    <div class="shop-header">
+      <div>
+        <span class="section-label">Premium Products</span>
+        <h2 class="section-title">SHOP &amp;<br>ACCESSORIES</h2>
+      </div>
+      <p class="section-sub">Click any product to see full details and place your order with GPS-verified delivery.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Battery -->
+      <div class="product-card reveal" onclick="openProductModal('battery')">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d);">
+          🔋
+        </div>
+        <div class="product-body">
+          <span class="product-brand">Livguard</span>
+          <div class="product-name">IT 2072TT Inverter Battery</div>
+          <p class="product-desc">200Ah tall-tubular battery. Ideal for 2–3 hour backup. Low maintenance, long life.</p>
+          <div class="product-footer">
+            <div class="product-price"><small>₹</small>21,695</div>
+            <button class="btn btn-primary btn-sm">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spray Pump -->
+      <div class="product-card reveal" style="transition-delay:.1s" onclick="openProductModal('pump')">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#1e2a1e,#2a3d2a);">
+          🌿
+        </div>
+        <div class="product-body">
+          <span class="product-brand">AgriPower</span>
+          <div class="product-name">Electric Spray Pump 12V</div>
+          <p class="product-desc">Heavy-duty 12V electric crop spray pump. 16-litre tank, adjustable nozzle, field-proven.</p>
+          <div class="product-footer">
+            <div class="product-price"><small>₹</small>3,500</div>
+            <button class="btn btn-primary btn-sm">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Microfiber Kit -->
+      <div class="product-card reveal" style="transition-delay:.2s" onclick="openProductModal('microfiber')">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#1a1820,#2a2535);">
+          🧽
+        </div>
+        <div class="product-body">
+          <span class="product-brand">DetailPro</span>
+          <div class="product-name">Microfiber Detailing Kit</div>
+          <p class="product-desc">Premium 6-piece microfiber cloth kit for scratch-free car detailing and polishing.</p>
+          <div class="product-footer">
+            <div class="product-price"><small>₹</small>300</div>
+            <button class="btn btn-primary btn-sm">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     ABOUT
+======================================================== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-visual">
+        <div class="about-main-box">
+          <div class="about-big-text">
+            SHIV<span>POWER</span>
+          </div>
+          <div class="about-tagline">Lopoke, Punjab · Since 2012</div>
+        </div>
+        <div class="about-badge-row">
+          <div class="about-badge">
+            <div class="about-badge-num">500+</div>
+            <div class="about-badge-label">Customers</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-num">12 Yrs</div>
+            <div class="about-badge-label">Experience</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-num">2 Brands</div>
+            <div class="about-badge-label">Authorised</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">BUILT FOR<br>RURAL INDIA</h2>
+        <p class="section-sub">Shiv Service Station started as a small scooter repair shop in Lopoke and has grown into a multi-service powerhouse trusted by farmers, families, and fleet owners across Punjab.</p>
+        <div class="feature-list">
+          <div class="feature-item reveal">
+            <div class="feature-icon">🛡️</div>
+            <div>
+              <div class="feature-item-title">Authorised Dealer</div>
+              <div class="feature-item-desc">Official partner for Livguard and Luminous batteries with genuine warranty support.</div>
+            </div>
+          </div>
+          <div class="feature-item reveal" style="transition-delay:.08s">
+            <div class="feature-icon">📍</div>
+            <div>
+              <div class="feature-item-title">GPS Home Delivery</div>
+              <div class="feature-item-desc">Order batteries online — we confirm your exact GPS coordinates for doorstep delivery.</div>
+            </div>
+          </div>
+          <div class="feature-item reveal" style="transition-delay:.16s">
+            <div class="feature-icon">⚙️</div>
+            <div>
+              <div class="feature-item-title">Expert Mechanics</div>
+              <div class="feature-item-desc">Trained technicians for crop pumps, inverters, and all automotive servicing needs.</div>
+            </div>
+          </div>
+          <div class="feature-item reveal" style="transition-delay:.24s">
+            <div class="feature-icon">🌾</div>
+            <div>
+              <div class="feature-item-title">Farm-First Focus</div>
+              <div class="feature-item-desc">We understand the seasonal urgency of farm equipment — same-day service where possible.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     LOCATION / FOOTER
+======================================================== -->
+<section id="location">
+  <div class="container">
+    <span class="section-label">Find Us</span>
+    <h2 class="section-title">VISIT THE<br>STATION</h2>
+
+    <div class="location-grid">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div>
+            <div class="contact-card-label">Address</div>
+            <div class="contact-card-value">Main Road, Lopoke, Amritsar, Punjab</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🕐</div>
+          <div>
+            <div class="contact-card-label">Working Hours</div>
+            <div class="contact-card-value">Mon – Sat: 8:00 AM – 8:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div>
+            <div class="contact-card-label">Call Us</div>
+            <div class="contact-card-value">+91 98765 XXXXX</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">💬</div>
+          <div>
+            <div class="contact-card-label">WhatsApp Orders</div>
+            <div class="contact-card-value">Message for quick battery orders</div>
+          </div>
+        </div>
+        <a href="#shop" class="btn btn-primary" style="margin-top:8px;">🔋 Order Battery Now</a>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.2!2d74.8722!3d31.6340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964b4c4d3b3b3%3A0x0!2sLopoke%2C+Punjab!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+          width="100%" height="360" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Lopoke Punjab Map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-icon" style="width:32px;height:32px;font-size:1rem;">⚡</div>
+        <span style="font-family:var(--font-head);font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff;">Shiv Service</span>
+      </div>
+      <p class="footer-copy">© 2024 Shiv Service Station & Scooter Workers, Lopoke, Punjab. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#location">Location</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================================
+     PRODUCT MODAL
+======================================================== -->
+<div class="modal-overlay" id="product-modal" onclick="closeModal('product-modal', event)">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal('product-modal')" aria-label="Close">✕</button>
+
+    <div class="modal-product-header">
+      <div class="modal-product-emoji" id="modal-emoji">🔋</div>
+      <div class="modal-product-brand" id="modal-brand">Livguard</div>
+      <div class="modal-product-name" id="modal-name">IT 2072TT</div>
+      <div class="modal-product-price" id="modal-price"><small>₹</small>21,695</div>
+    </div>
+
+    <div class="modal-body">
+      <p id="modal-desc">Full product description here.</p>
+
+      <div class="modal-specs" id="modal-specs-grid"></div>
+
+      <!-- Battery-only ordering box -->
+      <div class="battery-order-box" id="battery-order-box" style="display:none;">
+        <div class="battery-order-title">Order &amp; Delivery Options</div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="install-check" />
+          <label for="install-check">I need home installation (₹500 extra, includes setup &amp; demo)</label>
+        </div>
+
+        <div class="gps-row">
+          <button class="btn btn-outline-white btn-sm" id="gps-btn" onclick="shareGPS()">
+            📍 Share Exact GPS Location
+          </button>
+          <div class="gps-result" id="gps-result"></div>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:8px;" onclick="payAdvance()">
+          💳 Pay Advance ₹500
+        </button>
+        <p class="advance-note">Advance secures your order. Balance paid on delivery.</p>
+      </div>
+
+      <div class="modal-footer-btns">
+        <button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="addToCart()">
+          🛒 Add to Cart
+        </button>
+        <button class="btn btn-outline" style="flex:1;justify-content:center;" onclick="closeModal('product-modal')">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     LOGIN / ACCOUNT MODAL
+======================================================== -->
+<div class="modal-overlay" id="login-modal" onclick="closeModal('login-modal', event)">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal('login-modal')" aria-label="Close">✕</button>
+
+    <div class="login-header">
+      <div class="login-title">My Account</div>
+      <div class="login-sub">Save your details for fast, easy ordering and delivery.</div>
+    </div>
+
+    <div class="login-body">
+      <div class="form-group">
+        <label class="form-label" for="user-name">Full Name</label>
+        <input class="form-input" type="text" id="user-name" placeholder="e.g. Gurpreet Singh" autocomplete="name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="user-phone">Phone / WhatsApp Number</label>
+        <input class="form-input" type="tel" id="user-phone" placeholder="+91 98765 00000" autocomplete="tel"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="user-address">Home Address</label>
+        <textarea class="form-textarea" id="user-address" placeholder="Save your full home address for fast battery delivery and installation visits…"></textarea>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="saveAccount()">
+        💾 Save My Details
+      </button>
+
+      <div class="save-success" id="save-success">
+        ✅ &nbsp; Your details have been saved locally. We'll use these for fast delivery!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ========================================================
+     JAVASCRIPT
+======================================================== -->
+<script>
+/* ─────────────────────────────────────────────
+   STICKY HEADER
+───────────────────────────────────────────── */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ─────────────────────────────────────────────
+   MOBILE NAV
+───────────────────────────────────────────── */
+function toggleMobileNav() {
+  const nav  = document.getElementById('mobile-nav');
+  const ham  = document.getElementById('hamburger');
+  const open = nav.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ─────────────────────────────────────────────
+   PRODUCT DATA
+───────────────────────────────────────────── */
+const products = {
+  battery: {
+    emoji:   '🔋',
+    brand:   'Livguard',
+    name:    'IT 2072TT Inverter Battery',
+    price:   '21,695',
+    desc:    'The Livguard IT 2072TT is a 200Ah tall-tubular inverter battery engineered for long backup durations and low maintenance. Its advanced tubular plate technology delivers consistent performance even in hot Punjab summers. Compatible with all major inverter brands.',
+    specs:   [
+      { label: 'Capacity',    value: '200Ah' },
+      { label: 'Type',        value: 'Tall Tubular' },
+      { label: 'Warranty',    value: '42+24 Months' },
+      { label: 'Weight',      value: '≈ 64 kg' },
+      { label: 'Brand',       value: 'Livguard' },
+      { label: 'Backup',      value: '2–3 Hours' },
+    ],
+    isBattery: true,
+  },
+  pump: {
+    emoji:   '🌿',
+    brand:   'AgriPower',
+    name:    'Electric Spray Pump 12V',
+    price:   '3,500',
+    desc:    'A heavy-duty 12V electric crop spray pump with a 16-litre capacity tank. Features an adjustable fan nozzle for both fine mist and stream modes. Widely used by Punjab farmers for pesticide and fertilizer application across paddy and wheat fields.',
+    specs:   [
+      { label: 'Voltage',     value: '12V DC' },
+      { label: 'Tank',        value: '16 Litres' },
+      { label: 'Motor',       value: 'Brushless 45W' },
+      { label: 'Nozzle',      value: 'Adjustable' },
+      { label: 'Use',         value: 'Crops / Garden' },
+      { label: 'Warranty',    value: '6 Months' },
+    ],
+    isBattery: false,
+  },
+  microfiber: {
+    emoji:   '🧽',
+    brand:   'DetailPro',
+    name:    'Microfiber Detailing Kit',
+    price:   '300',
+    desc:    'A premium 6-piece microfiber cloth set designed for scratch-free car washing and polishing. Ultra-soft 320GSM fabric absorbs water quickly and leaves no lint. Perfect for bikes, cars, and tractor cabins after a wash at our station.',
+    specs:   [
+      { label: 'Pieces',      value: '6 Cloths' },
+      { label: 'GSM',         value: '320 GSM' },
+      { label: 'Size',        value: '40×40 cm each' },
+      { label: 'Material',    value: 'Polyester Blend' },
+      { label: 'Use',         value: 'Cars / Bikes' },
+      { label: 'Washable',    value: 'Yes, 60°C' },
+    ],
+    isBattery: false,
+  },
+};
+
+/* ─────────────────────────────────────────────
+   OPEN PRODUCT MODAL
+───────────────────────────────────────────── */
+let currentProduct = null;
+
+function openProductModal(key) {
+  const p = products[key];
+  if (!p) return;
+  currentProduct = key;
+
+  document.getElementById('modal-emoji').textContent  = p.emoji;
+  document.getElementById('modal-brand').textContent  = p.brand;
+  document.getElementById('modal-name').textContent   = p.name;
+  document.getElementById('modal-price').innerHTML    = `<small>₹</small>${p.price}`;
+  document.getElementById('modal-desc').textContent   = p.desc;
+
+  // specs
+  const grid = document.getElementById('modal-specs-grid');
+  grid.innerHTML = p.specs.map(s =>
+    `<div class="spec-item">
+       <div class="spec-label">${s.label}</div>
+       <div class="spec-value">${s.value}</div>
+     </div>`
+  ).join('');
+
+  // battery order box
+  const box = document.getElementById('battery-order-box');
+  box.style.display = p.isBattery ? 'block' : 'none';
+
+  // reset GPS
+  document.getElementById('gps-result').className = 'gps-result';
+  document.getElementById('gps-result').textContent = '';
+  document.getElementById('install-check').checked = false;
+
+  openModal('product-modal');
+}
+
+/* ─────────────────────────────────────────────
+   MODAL HELPERS
+───────────────────────────────────────────── */
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id, e) {
+  if (e && e.target !== document.getElementById(id)) return;
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['product-modal','login-modal'].forEach(id => {
+      document.getElementById(id).classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+function openLoginModal() {
+  // pre-fill from localStorage if saved
+  const saved = JSON.parse(localStorage.getItem('shiv_user') || '{}');
+  if (saved.name)    document.getElementById('user-name').value    = saved.name;
+  if (saved.phone)   document.getElementById('user-phone').value   = saved.phone;
+  if (saved.address) document.getElementById('user-address').value = saved.address;
+  document.getElementById('save-success').classList.remove('show');
+  openModal('login-modal');
+}
+
+/* ─────────────────────────────────────────────
+   GPS LOCATION
+───────────────────────────────────────────── */
+function shareGPS() {
+  const btn    = document.getElementById('gps-btn');
+  const result = document.getElementById('gps-result');
+
+  if (!navigator.geolocation) {
+    result.textContent = '❌ Geolocation is not supported by your browser.';
+    result.className   = 'gps-result show error';
+    return;
+  }
+
+  btn.textContent  = '⏳ Getting location…';
+  btn.disabled     = true;
+  result.textContent = '';
+  result.className = 'gps-result';
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const lat = pos.coords.latitude.toFixed(6);
+      const lon = pos.coords.longitude.toFixed(6);
+      const acc = Math.round(pos.coords.accuracy);
+      result.innerHTML  = `✅ Location Captured!<br>
+        <strong>Latitude:</strong> ${lat}<br>
+        <strong>Longitude:</strong> ${lon}<br>
+        <strong>Accuracy:</strong> ±${acc} metres<br>
+        <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank" 
+           style="color:#5dbb63;text-decoration:underline;font-size:.8rem;">
+          🗺️ View on Google Maps
+        </a>`;
+      result.className  = 'gps-result show success';
+      btn.innerHTML     = '✅ Location Shared';
+      btn.disabled      = false;
+      showToast('📍 GPS location captured successfully!');
+    },
+    (err) => {
+      let msg = '❌ Could not get location. ';
+      if (err.code === 1) msg += 'Permission denied — please allow location access in your browser settings.';
+      else if (err.code === 2) msg += 'Position unavailable. Check your GPS / signal.';
+      else if (err.code === 3) msg += 'Request timed out. Try again.';
+      result.textContent = msg;
+      result.className   = 'gps-result show error';
+      btn.innerHTML      = '📍 Share Exact GPS Location';
+      btn.disabled       = false;
+    },
+    { timeout: 12000, enableHighAccuracy: true }
+  );
+}
+
+/* ─────────────────────────────────────────────
+   PAY ADVANCE
+───────────────────────────────────────────── */
+function payAdvance() {
+  const gpsResult = document.getElementById('gps-result');
+  const hasGPS    = gpsResult.classList.contains('success');
+
+  if (!hasGPS) {
+    showToast('📍 Please share your GPS location first before paying.');
+    return;
+  }
+
+  // Simulate payment initiation
+  showToast('💳 Redirecting to payment gateway… (demo mode)');
+  setTimeout(() => {
+    alert('✅ Advance Payment Demo\n\nIn the live version, this will redirect to Razorpay / UPI to collect ₹500 advance.\n\nOrder will be confirmed via WhatsApp within 30 minutes.');
+  }, 800);
+}
+
+/* ─────────────────────────────────────────────
+   ADD TO CART
+───────────────────────────────────────────── */
+function addToCart() {
+  if (!currentProduct) return;
+  const p = products[currentProduct];
+  showToast(`🛒 ${p.name} added! We'll call to confirm.`);
+  closeModal('product-modal');
+}
+
+/* ─────────────────────────────────────────────
+   SAVE ACCOUNT
+───────────────────────────────────────────── */
+function saveAccount() {
+  const name    = document.getElementById('user-name').value.trim();
+  const phone   = document.getElementById('user-phone').value.trim();
+  const address = document.getElementById('user-address').value.trim();
+
+  if (!name || !phone) {
+    showToast('⚠️ Please enter your name and phone number.');
+    return;
+  }
+
+  localStorage.setItem('shiv_user', JSON.stringify({ name, phone, address }));
+  document.getElementById('save-success').classList.add('show');
+  showToast(`✅ Account saved! Welcome, ${name}.`);
+}
+
+/* ─────────────────────────────────────────────
+   TOAST
+───────────────────────────────────────────── */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* ─────────────────────────────────────────────
+   SMOOTH SCROLL FOR ANCHORS
+───────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
